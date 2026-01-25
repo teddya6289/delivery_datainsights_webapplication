@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css')}}">
+{% block title %} 
+
+{% endblock %}
+</head>
+
+<body>
+        <div class="home-header">
+            
+        </div>
+    <header>
+<div class="nav-links">
+      <nav> 
+         <ul> 
+            {%if current_user.is_authenticated%}
+                <li class="list">
+                    <p class="{{ 'active' if request.endpoint == 'insights.book_catalogue' else '' }}">
+                        Menu
+                    </p>
+                    <ul class = "listdown">
+                            <li class="listdown1">
+                                <a href="{{url_for('insights.book_catalogue')}}">
+                                    <span id="current-month"></span>:
+                                    <script>
+                                       const monthNames = [
+                                          "January", "February", "March", "April",
+                                          "May", "June", "July", "August",
+                                          "September", "October", "November", "December"];
+
+                                       const now = new Date();
+                                       const currentMonth = monthNames[now.getMonth()];
+
+                                       document.getElementById("current-month").textContent = currentMonth;
+                                       </script>Product Report (Data Analysis)
+                                </a>
+                            </li>
+
+                             <li class="listdown1">
+                                <a href="{{url_for('user.signout')}}">
+                                    Sign-Out
+                                </a>
+                            </li>
+                    </ul>
+
+                </li>
+            {% else %}
+                  <li class="list">
+                     <a href="{{url_for('user.enroluser')}}" class="{{ 'active' if request.endpoint == 'user.enroluser' else '' }}">
+                        Enrol
+                     </a>
+                  </li>
+                  
+                  <li class="list">
+                     <a href="{{url_for('user.login')}}" class="{{ 'active' if request.endpoint == 'user.login' else '' }}">
+                        login
+                     </a>
+                  </li>
+            {% endif %}
+         </ul>
+      </nav>
+   </div>
+</header>
+<div class="flash-meg">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+         {% if messages %}
+            {% for category, message in messages %}
+               <div id="flash-message" class ="alert alert-{{category}}">
+                  <p class="message-left">{{message}}</p>
+               </div>
+            {% endfor %}
+         {% endif %}
+      {% endwith %}
+</div>
+<script>
+   setTimeout(() => {
+       const flashMessage = document.getElementById('flash-message');
+       if (flashMessage) {
+           flashMessage.style.display = 'none';
+       }
+   }, 4000); 
+</script>
+
+<div class="content-body"> 
+   {%block body%}
+                           
+   {% endblock%}
+</div>
+
+
+
+</body>
+
+</html>

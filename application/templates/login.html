@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+    Enterprise data delivery
+</title>
+{% endblock %}
+
+{% block body %}
+    
+        <div class="login-f">
+                <form name="loginform" action="{{url_for('user.login')}}" method="POST">
+                    {{form.hidden_tag()}}
+                        
+                    <p class="fieldrow">
+                        {{form.identifier.label}}
+                        {{form.identifier()}}
+                        {% for error in form.identifier.errors%}
+                            <span class="email-error">
+                                {{error}}
+                            </span>
+                        {%endfor%}
+                    </p>        
+                        
+                    <p class="fieldrow">    
+                        {{form.password.label}}
+                        {{form.password()}}
+                        {% for error in form.password.errors%}
+                            <span class="password-error">
+                                {{error}}
+                            </span>
+                        {%endfor%}
+                    </p>
+                    
+                    <p class="summit-b">
+                        {{form.login()}}
+                    </p>
+                    
+                <p class="forgotpw">
+                    <a href= "{{url_for('rp.forgotpassword')}}">
+                            Forgot password?
+                    </a>
+                </p>
+                </form>
+
+                
+        </div>
+
+{% endblock %}

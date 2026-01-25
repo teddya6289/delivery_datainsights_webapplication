@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%block body%}
+
+
+{% if current_user.is_authenticated and current_user.jobtitle == "Procurement director" %}
+    <p class="profile"> <span>{{username}}</span>:<span class="j_title">{{jobtitle}}</span></p>
+<div class="kpi"> 
+    <p class="metric">{{current_month}}:Current #Book Sold <span class="{{'green' if totalbooksold >= 1500 else 'red'}}">{{"{:,}".format(totalbooksold)}}</span></p>
+    <p class="hint-state"><span class="hint"> Hint:</span>Red color indicate actual value (<) target value,while Green is actual value (>=) Target value.</p>
+</div>
+{%endif%}
+
+{% if current_user.is_authenticated and current_user.jobtitle == "Sales director" %}
+    <p class="profile"> <span>{{username}}</span>:<span class="j_title">{{jobtitle}}</span></p>
+<div class="kpi"> 
+    <p class="metric">{{current_month}}:Current Total Sales <span class="{{'green' if totalsales >= 10000 else 'red'}}">(${{"{:,.2f}".format(totalsales)}})</span></p>
+        <p class="hint-state"><span class="hint"> Hint:</span>Red color indicate actual (<)Target value, while Green is actual value (>=) Target.</p>
+</div>
+{%endif%}
+
+
+<div class="chart-container">
+    <div class="chart-box">
+        <p>Top 5 genre in sales performance</p>
+        <img src="data:image/png;base64,{{ top5sellers }}">
+    </div>
+
+    <div class="chart-box">
+        <p>Bottom 5 genre in sales performance</p>
+        <img src="data:image/png;base64,{{ bottom5worstsellers }}">
+    </div>
+</div>
+
+
+{%endblock%}

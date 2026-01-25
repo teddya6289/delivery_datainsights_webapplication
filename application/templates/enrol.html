@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+    Enterprise data delivery
+</title>
+{% endblock %}
+
+{% block body %}
+    
+        <div class="enrol-f">
+                <form name="enrolform" action="{{url_for('user.enroluser')}}" method="POST">
+                    {{form.hidden_tag()}}
+
+                <p class="enrolfield">   
+                    
+                    {{form.firstname.label}}
+                    {{form.firstname()}}
+                </p>
+                
+                <p class="enrolfield">
+                    {{form.lastname.label}}
+                    {{form.lastname()}}
+                </p>
+                    
+                <P class="enrolfield">
+                    {{form.dateofbirth.label}}
+                    {{form.dateofbirth()}}
+                    {% for error in form.dateofbirth.errors%}
+                            <span class="password-error">
+                                {{error}}
+                            </span>
+                    {%endfor%}
+                </p>    
+                    
+                
+                <P class="enrolfield"> 
+                        {{form.jobtitle.label}}
+                        {% for subfield in form.jobtitle%}
+                            {{subfield()}} {{subfield.label}}
+                        {%endfor%}
+                </p>
+                    
+                <P class="enrolfield">
+                    {{form.email.label}}
+                    {{form.email()}}
+                    {% for error in form.email.errors%}
+                            <span class="password-error">
+                                {{error}}
+                            </span>
+                    {%endfor%}
+                </p>    
+                    
+                
+                <P class="enrolfield">
+                    {{form.password.label}}
+                    {{form.password()}}
+                    {% for error in form.password.errors%}
+                            <span class="password-error">
+                                {{error}}
+                            </span>
+                    {%endfor%}
+                </p>
+                    
+                
+                <P class="enrolfield">
+                    {{form.confirm_password.label}}
+                    {{form.confirm_password()}}
+                    {% for error in form.confirm_password.errors%}
+                            <span class="password-error">
+                                {{error}}
+                            </span>
+                    {%endfor%}
+                </p>
+                   
+
+                    <p class="form-sumit-b">
+                        {{form.submit()}}
+                    </p>
+                </form>
+        </div>
+
+{% endblock %}
