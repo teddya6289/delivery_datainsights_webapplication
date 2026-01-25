@@ -91,6 +91,7 @@ Visualization | Server-side aggregation + chart rendering |
 
 - Least privilege access
 - Stateless verification
+- layered security for sensitive routes(email verification before access)
 - Defense against brute-force and abuse
 - Explicit timeout handling using `timedelta`
 - No implicit trust of client or session state
