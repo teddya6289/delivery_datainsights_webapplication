@@ -58,7 +58,7 @@ def forgotpassword():
 
 
 @forgotpassword_bp.route("/resetpassword/<token>", methods = ["GET","POST"])
-@limiter.limit("25 per hour")
+@limiter.limit("10 per hour")
 def resetpassword(token):
     from app_extentions import mask_dob
     
