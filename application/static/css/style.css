@@ -175,11 +175,11 @@ nav a:hover {
 .alert-success{
                 border-radius: 10px;
             font-style: italic;
-            color: rgb(26, 113, 26);
+            color:rgba(98, 248, 98, 0.852);
             font-size: 15px; 
           width: fit-content;
         padding: 3px;
-      background-color: rgb(44, 43, 43);}
+      background-color:rgb(44, 43, 43) ;}
 
 
 .alert-info{

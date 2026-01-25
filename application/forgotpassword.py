@@ -140,6 +140,15 @@ def changepassword(token):
     user = User.query.filter_by(email = email).first()
     Expired_token_timer = current_app.config["TOKEN_EXPIRED"]
     token_time_left = Expired_token_timer-(round((now - user.token_sent_at).total_seconds()))
+    if token_time_left <= 0:
+        flash("Password request timedout.Please reinitiate request","info")
+        session.pop("dob_verified", None)
+        session.pop("password_reset_count", None)
+        session.modified = True
+        user.token_hashed = None
+        user.token_sent_at = None
+        db.session.commit()
+        return redirect(url_for("rp.forgotpassword"))
     
     
     if user:
