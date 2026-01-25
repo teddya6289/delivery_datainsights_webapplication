@@ -5,6 +5,7 @@ from flask_login import current_user,login_user,logout_user,login_required
 from app_forms import enrolform,loginform
 from app_extentions import get_safe_redirect, generate_userid,limiter
 from flask_limiter.util import get_remote_address
+from unblock_user import unblock_if_expired_l
 
 
 
@@ -54,6 +55,7 @@ def enroluser():
 
 @useraccess_bp.route('/login',methods=['GET','POST'])
 @limiter.limit("48 per hour",key_func=lambda:request.form.get("identifier" or request.remote_addr))
+@unblock_if_expired_l
 def login():
     from datetime import (datetime, timezone)
     MAX_ATTEMPTS    = current_app.config["MAX_ATTEMPTS"]
@@ -69,11 +71,6 @@ def login():
                     user = User.query.filter_by(email = Email).first()
                     if user:
                     
-                        if user.locked_until and user.locked_until > now:
-                            abort(403,description=f"Account locked.Try again after {round((user.locked_until-now).total_seconds() // 60)} minutes")
-                            
-                            
-                        
                         if user and user.check_password(Password):
                             user.failed_attempts = 0
                             user.locked_until = None

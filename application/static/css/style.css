@@ -80,14 +80,14 @@ padding: 5px;}
         gap: 10px;}
 
 .enrolfield label{width: 100px;
-                  text-align: left;
+                  text-align: right;
                   font-weight: bold;
                   font-size: 16px;
                 background-color: black;
               padding: 5px;
             border-radius: 8px;
           color: white;
-        width: fit-content;
+        
       }
 
 .enrolfield input{flex: 1;
