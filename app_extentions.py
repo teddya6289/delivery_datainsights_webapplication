@@ -156,11 +156,6 @@ def limiter_user():
           return f"user:{str(current_user.email).lower()}|ip:{get_remote_address()}"
      return f"ip:{get_remote_address()}"
 
-def limiter_rf():
-    if current_user.is_authenticated:
-          return None
-    form = forgotpasswordform()
-    return form.email.data
 
 
      

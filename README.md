@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Flask-based web application that combines **enterprise-grade authentication security,Activity monitoring and Contol** with **User registeration with role select with role-based analytical delivery**.
+This project is a Flask-based web application that combines **enterprise-grade authentication security,Activity monitoring and Contol** with **User registeration and role-based analytical delivery**.
 
 It was designed to address two critical concerns in modern business systems:
 
@@ -61,8 +61,9 @@ Rate Limiting | Flask-Limiter |
 Email | Flask-Mail |
 ORM | SQLAlchemy |
 Templating | Jinja2 |
-Security Tokens | itsdangerous |
-Time Handling | datetime, timedelta |
+Security Tokens and safe redirect| itsdangerous |
+Time Handling | datetime, timedelta,timezone |
+User Warning|flask-flash
 Visualization | Server-side aggregation + chart rendering |
 
 ---

@@ -5,7 +5,7 @@ from flask import (render_template,redirect,request,Blueprint,flash,abort,url_fo
 from flask_login import current_user
 from flask_mail import Message
 from datetime import datetime, timezone,timedelta
-from app_extentions import verify_token, limiter,limiter_user,limiter_rf
+from app_extentions import verify_token, limiter,limiter_user
 
 
 forgotpassword_bp = Blueprint("rp",__name__)
