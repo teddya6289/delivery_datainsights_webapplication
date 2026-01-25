@@ -109,7 +109,7 @@ def resetpassword(token):
                             session["user_block_at"] = datetime.now(timezone.utc)
                             db.session.commit()
                             
-                            abort(401,description = f":Account locked for {timedelta(minutes= 10).seconds//60}!!! Too many failed attempts.")
+                            abort(401,description = f"!!! Account locked for {timedelta(minutes= 10).seconds//60} minutes Too many failed attempts.")
                             
                             
                         else:

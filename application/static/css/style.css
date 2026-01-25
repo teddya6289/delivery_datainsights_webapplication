@@ -17,13 +17,15 @@ body{
 
 
 .home-header {
-    width: 2000px;
+    width: 1600px;
     height:  10vh;                 /* full viewport height */
     background-image: url("/static/css/image/image.jpg");
     background-size:auto;        /* fills entire area */
     background-position:center;   /* centers image */
     background-repeat: repeat;
-  margin: -30px -30px 50px}
+  margin: -30px -30px 50px;
+border-radius: 30px;
+border-style: groove;}
 
 
   .login-f {display: flex;

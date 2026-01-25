@@ -79,6 +79,7 @@ def verifyEmail(token):
                                             verified_user.email_verified = True
                                             session["email_verified_at"] = datetime.now(timezone.utc)
                                             db.session.commit()
+                                            flash("Email verified successfully","success")
                                             next_page = session.pop("post_verify_redirect", None)
                                             if next_page and get_safe_redirect(next_page, "insights.catalogue"):
                                                 return redirect(next_page)
