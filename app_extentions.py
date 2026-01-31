@@ -45,7 +45,7 @@ def metricfunc(df):
              
 
             fig, ax = plt.subplots(figsize = (4,4))
-            ax.bar(top5book_by_genre_df["genre"], top5book_by_genre_df["no_booksold"])
+            ax.bar(top5book_by_genre_df["genre"], top5book_by_genre_df["no_booksold"],color ="green",edgecolor="black",alpha=0.8)
             ax.set_title("Top 5 Best Sellers")
             ax.tick_params(axis='x', labelrotation=45)
             fig.tight_layout()
@@ -56,7 +56,7 @@ def metricfunc(df):
             img.seek(0)
 
             fig2, ax2 = plt.subplots(figsize = (4,4))
-            ax2.bar(bottom5book_by_genre_df["genre"], bottom5book_by_genre_df["no_booksold"])
+            ax2.bar(bottom5book_by_genre_df["genre"], bottom5book_by_genre_df["no_booksold"],color ="red",edgecolor="black",alpha=0.8)
             ax2.set_title("Bottom 5 worst Sellers")
             ax2.tick_params(axis='x', labelrotation=45)
             fig2.tight_layout()
